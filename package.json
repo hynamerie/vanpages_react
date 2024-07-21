@@ -6,8 +6,9 @@
     "react-router-dom": "6.4.3"
   },
   "devDependencies": {
-    "vite": "latest",
-    "@vitejs/plugin-react": "*"
+    "@vitejs/plugin-react": "*",
+    "miragejs": "^0.2.0-alpha.3",
+    "vite": "latest"
   },
   "scripts": {
     "start": "vite",

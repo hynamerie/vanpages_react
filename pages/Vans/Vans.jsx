@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Vans = () => {
+export default function Vans() {
   const [vans, setVans] = React.useState([])
 
   React.useEffect(() => {

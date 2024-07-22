@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Income = () => {
+function Income() {
   return (
     <div>Income</div>
   )

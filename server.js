@@ -15,7 +15,7 @@ createServer({
             type: "rugged", hostId: "345" })
         server.create("van", { id: "3", name: "Reliable Red", price: 100, description: "Reliable Red is a van that was made for travelling. The inside is comfortable and cozy, with plenty of space to stretch out in. There's a small kitchen, so you can cook if you need to. You'll feel like home as soon as you step out of it.", 
             imageUrl: "https://assets.scrimba.com/advanced-react/react-router/reliable-red.png", 
-            type: "luxury", hostId: "678" })
+            type: "luxury", hostId: "123" })
         server.create("van", { id: "4", name: "Dreamfinder", price: 65, description: "Dreamfinder is the perfect van to travel in and experience. With a ceiling height of 2.1m, you can stand up in this van and there is great head room. The floor is a beautiful glass-reinforced plastic (GRP) which is easy to clean and very hard wearing. A large rear window and large side windows make it really light inside and keep it well ventilated.", 
             imageUrl: "https://assets.scrimba.com/advanced-react/react-router/dreamfinder.png", 
             type: "simple", hostId: "789" })
@@ -31,15 +31,6 @@ createServer({
         this.namespace = "api"
         this.logging = false
 
-        this.get("/vans", (schema, request) => {
-            return schema.vans.all()
-        })
-        
-        this.get("/vans/:id", (schema, request) => {
-            const id = request.params.id
-            return schema.vans.find(id)
-        })
-        
         this.get("/host/vans", (schema, request) => {
             // Hard-code the hostId for now
             return schema.vans.where({ hostId: "123" })

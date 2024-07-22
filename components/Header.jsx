@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-const Header = () => {
+function Header() {
   return (
     <header>
       <Link className="site-logo" to="/">#VanLife</Link>

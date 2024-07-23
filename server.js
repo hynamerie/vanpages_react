@@ -31,6 +31,10 @@ createServer({
         this.namespace = "api"
         this.logging = false
 
+        //Loading time 2s
+        // this.timing = 2000
+
+
         this.get("/host/vans", (schema, request) => {
             // return new Response(400, {}, {error: "Error fetching data"})
             return schema.vans.where({ hostId: "123" })

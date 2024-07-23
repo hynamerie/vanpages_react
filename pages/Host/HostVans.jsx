@@ -11,14 +11,21 @@ export default function HostVans() {
     //         .then(data => setVans(data.vans))
     // }, [])
 
-    
-  React.useEffect(() => {
-    async function loadVans() {
-        const data = await getVans();
-        setVans(data)
-    };
-    loadVans()
-  }, [])
+    const [loading, setLoading] = React.useState(false)
+
+    React.useEffect(() => {
+        async function loadVans() {
+            setLoading(true)
+            const data = await getVans();
+            setVans(data)
+            setLoading(false)
+        };
+        loadVans()
+    }, [])
+
+    if (loading) {
+        return <h1>Loading...</h1>
+        }
 
   const hostVansEls = vans.map(van => (
     <Link
@@ -40,7 +47,10 @@ export default function HostVans() {
     <section>
         <h1 className="host-vans-title">Your listed vans</h1>
         <div className="host-vans-list">
-            {
+        <section>
+            {hostVansEls}
+        </section>
+            {/* {
                 vans.length > 0 ? (
                     <section>
                         {hostVansEls}
@@ -49,7 +59,7 @@ export default function HostVans() {
                 ) : (
                         <h2>Loading...</h2>
                     )
-            }
+            } */}
         </div>
     </section>
   )

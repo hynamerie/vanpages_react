@@ -9,6 +9,7 @@ import HostLayout from './components/HostLayout';
 import HostVans from './pages/Host/HostVans';
 import HostVanDetail from './pages/Host/HostVanDetail';
 import HostVanInfo from './pages/Host/HostVanInfo';
+import Login from './pages/Login';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
           
           <Route path="host" element={<HostLayout/>}>
             <Route index element={<Dashboard />} />

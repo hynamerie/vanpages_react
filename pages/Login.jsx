@@ -12,11 +12,28 @@ export default function Login() {
     //     e.preventDefault()
     //     console.log(loginFormData)
     // }
-    
+
+    // function handleSubmit(e) {
+    //     e.preventDefault()
+    //     loginUser(loginFormData)
+    //         .then(data => console.log(data))
+    // }
+
+    const [status, setStatus] = React.useState("idle")
+    const [error, setError] = React.useState(null)
     function handleSubmit(e) {
         e.preventDefault()
+        setStatus("submitting")
         loginUser(loginFormData)
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => {
+                setError(err)
+            })
+            .finally(() => {
+                setStatus("idle")
+            })
     }
 
     function handleChange(e) {
@@ -33,6 +50,10 @@ export default function Login() {
             location.state?.message && 
             <h3>{location.state.message}</h3>
           }
+            {
+                error?.message &&
+                <h3 className="login-first">{error.message}</h3>
+            }
             <h1>Sign in to your account</h1>
             <form onSubmit={handleSubmit} className="login-form">
                 <input
@@ -49,7 +70,15 @@ export default function Login() {
                     placeholder="Password"
                     value={loginFormData.password}
                 />
-                <button>Log in</button>
+                {/* <button>Log in</button> */}
+                <button 
+                    disabled={status === "submitting"}
+                >
+                    {status === "submitting" 
+                        ? "Logging in..." 
+                        : "Log in"
+                    }
+                </button>
             </form>
         </div>
     )

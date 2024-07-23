@@ -9,7 +9,9 @@ import HostLayout from './components/HostLayout';
 import HostVans from './pages/Host/HostVans';
 import HostVanDetail from './pages/Host/HostVanDetail';
 import HostVanInfo from './pages/Host/HostVanInfo';
+
 import Login from './pages/Login';
+import AuthRequired from './components/AuthRequired';
 
 
 function App() {
@@ -19,16 +21,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home />} />
+
           <Route path="login" element={<Login />} />
-          
-          <Route path="host" element={<HostLayout/>}>
-            <Route index element={<Dashboard />} />
-            <Route path='vans' element={<HostVans/>} />
-            
-            <Route path='vans/:id' element={<HostVanDetail/>}>
-              <Route index element={<HostVanInfo />} />
+
+          <Route element={<AuthRequired /> }>
+            <Route path="host" element={<HostLayout/>}>
+              <Route index element={<Dashboard />} />
+              <Route path='vans' element={<HostVans/>} />            
+              <Route path='vans/:id' element={<HostVanDetail/>}>
+                <Route index element={<HostVanInfo />} />
+              </Route>
             </Route>
           </Route>
+          
         </Route>
       </Routes>
     </BrowserRouter>

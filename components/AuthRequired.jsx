@@ -6,7 +6,7 @@ export default function AuthRequired() {
     const authenticated = localStorage.getItem("loggedin");
 
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
 
     if (!authenticated) {
         return (

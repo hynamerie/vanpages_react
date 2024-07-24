@@ -5,7 +5,8 @@ import { loginUser } from "../api"
 export default function Login() {
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
 
-    const location = useLocation()
+    const location = useLocation();
+    const navigate = useNavigate();
     // console.log(location)
 
     // function handleSubmit(e) {
@@ -27,6 +28,9 @@ export default function Login() {
         loginUser(loginFormData)
             .then(data => {
                 console.log(data)
+                setError(null)
+                localStorage.setItem("loggedin", true)
+                navigate("/host", { replace: true })
             })
             .catch(err => {
                 setError(err)
